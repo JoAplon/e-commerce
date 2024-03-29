@@ -27,7 +27,10 @@ router.get('/:id', (req, res) => {
     include: [
       {
         model: Product,
-      }
+      },
+      // {
+      //   model: Tag,
+      // },
     ]
   }).then((categoryData) => {
     if (!categoryData) {
@@ -43,9 +46,7 @@ router.get('/:id', (req, res) => {
 router.post('/', (req, res) => {
   console.log(req.body);
   // create a new category
-  Category.create({
-    name: req.body.name
-  })
+  Category.create(req.body)
     .then((newCategory) => {
       res.json(newCategory);
     })
@@ -56,11 +57,8 @@ router.post('/', (req, res) => {
 
 router.put('/:id', (req, res) => {
   // update a category by its `id` value
-  Category.update(
-    {
-      name: req.body.name,
-    },
-    {
+  Category.update(req.body
+    ,{
       // do i need to put the id here?
       where: {
         id: req.params.id,

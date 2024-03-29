@@ -55,17 +55,15 @@ router.post('/', (req, res) => {
 
 router.put('/:id', (req, res) => {
   // update a tag's name by its `id` value
-  Tag.update(
-    {
-      name: req.body.name,
-    },
-    {
+  Tag.update(req.body
+    ,{
       // do i need to put the id here?
       where: {
         id: req.params.id,
       }
     },
   )
+  res.status(200).json({message: 'Tag updated!'});
 });
 
 router.delete('/:id', (req, res) => {
@@ -75,7 +73,7 @@ router.delete('/:id', (req, res) => {
       id: req.params.id,
     }
   })
-    .then((deletedCategory) => {
+    .then((deletedTag) => {
       res.json(deletedTag);
     })
     .catch((err) => res.json(err));
