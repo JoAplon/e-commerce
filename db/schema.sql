@@ -1,19 +1,18 @@
 -- DROP DATABASE
 DROP DATABASE IF EXISTS ecommerce_db;
-
--- CREATE DATABASE
 CREATE DATABASE ecommerce_db;
+
+\c ecommerce_db;
 
 CREATE TABLE category (
     id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
-    category_name VARCHAR(30) NOT NULL,
+    category_name VARCHAR(30) NOT NULL
 );
 
 CREATE TABLE product (
     id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
     product_name VARCHAR(30) NOT NULL,
     price DECIMAL(10, 2) NOT NULL,
-    -- IS_DECIMAL (price)
     stock INT NOT NULL DEFAULT 10,
     category_id INT,
     FOREIGN KEY (category_id)

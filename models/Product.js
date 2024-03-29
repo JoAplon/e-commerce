@@ -23,12 +23,12 @@ Product.init(
     product_price: {
       type: DataTypes.DECIMAL,
       allowNull: false,
-      // can you put a defaule here?
+      // can you put a default here?
     },
     product_stock: {
       type: DataTypes.INTEGER,
       allowNull: false,
-      // can you put a defaule here?
+      // can you put a default here?
     },
     // ??????
     category_id: {
